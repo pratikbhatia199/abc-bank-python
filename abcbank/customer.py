@@ -1,5 +1,4 @@
-from account import CHECKING, SAVINGS, MAXI_SAVINGS
-
+from abcbank.account import CHECKING, SAVINGS, MAXI_SAVINGS
 
 class Customer:
     def __init__(self, name):

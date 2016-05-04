@@ -1,7 +1,7 @@
 from nose.tools import assert_equals, nottest
 
-from account import Account, CHECKING, SAVINGS
-from customer import Customer
+from abcbank.account import Account, CHECKING, SAVINGS
+from abcbank.customer import Customer
 
 
 def test_statement():
