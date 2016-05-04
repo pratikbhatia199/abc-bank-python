@@ -1,9 +1,9 @@
 class Bank:
     def __init__(self):
-        self.customers = []
+        self.customers = set()
 
     def addCustomer(self, customer):
-        self.customers.append(customer)
+        self.customers.add(customer)
     def customerSummary(self):
         summary = "Customer Summary"
         for customer in self.customers:
