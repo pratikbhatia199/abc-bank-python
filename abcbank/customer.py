@@ -19,7 +19,7 @@ class Customer:
             self.accounts.add(account)
             return self
         else:
-            ValueError("account of type "+ account.name + "already exists for customer")
+            raise ValueError("account of given type already exists for customer")
 
     def numAccs(self):
         return len(self.accounts)
