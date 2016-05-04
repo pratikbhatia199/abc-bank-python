@@ -10,6 +10,15 @@ class Account:
         self.accountType = accountType
         self.transactions = []
 
+    def __hash__(self):
+        return self.accountType
+
+    def __cmp__(self):
+        return object.__cmp__(self)
+
+    def __eq__(self, rhs):
+        return self.accountType == rhs.accountType
+
     def deposit(self, amount):
         if (amount <= 0):
             raise ValueError("amount must be greater than zero")

@@ -3,7 +3,7 @@ from abcbank.account import CHECKING, SAVINGS, MAXI_SAVINGS
 class Customer:
     def __init__(self, name):
         self.name = name
-        self.accounts = []
+        self.accounts = set()
 
     def __hash__(self):
         return abs(hash(self.name)) % (10 ** 8)
@@ -15,8 +15,11 @@ class Customer:
         return self.name == rhs.name
 
     def openAccount(self, account):
-        self.accounts.append(account)
-        return self
+        if account not in self.accounts:
+            self.accounts.add(account)
+            return self
+        else:
+            ValueError("account of type "+ account.name + "already exists for customer")
 
     def numAccs(self):
         return len(self.accounts)
