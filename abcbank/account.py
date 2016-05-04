@@ -32,19 +32,26 @@ class Account:
         else:
             self.transactions.append(Transaction(-amount))
 
+    def getSavingsAccountLT1000(self, amount):
+        return amount * 0.001 * DateProvider.getTotalDaysPassedRatio()
+
+    def getSavingsAccountGT1000(self, amount):
+        return self.getSavingsAccountLT1000(1000) + \
+               (amount - 1000) * 0.002 * DateProvider.getTotalDaysPassedRatio()
+
     def interestEarned(self):
         amount = self.sumTransactions()
         if self.accountType == SAVINGS:
             if (amount <= 1000):
-                return amount * 0.001
+                return self.getSavingsAccountLT1000(amount)
             else:
-                return 1 + (amount - 1000) * 0.002
+                return self.getSavingsAccountGT1000(amount)
 
         if self.accountType == MAXI_SAVINGS:
             if not self.checkTransactionInLastTenDays():
-                return amount * 0.005
+                return amount * 0.005 * DateProvider.getTotalDaysPassedRatio()
         else:
-            return amount * 0.001
+            return amount * 0.001 * DateProvider.getTotalDaysPassedRatio()
 
     def sumTransactions(self):
         return sum([t.amount for t in self.transactions])
