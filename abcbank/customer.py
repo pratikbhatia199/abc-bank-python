@@ -5,6 +5,15 @@ class Customer:
         self.name = name
         self.accounts = []
 
+    def __hash__(self):
+        return abs(hash(self.name)) % (10 ** 8)
+
+    def __cmp__(self):
+        return object.__cmp__(self)
+
+    def __eq__(self, rhs):
+        return self.name == rhs.name
+
     def openAccount(self, account):
         self.accounts.append(account)
         return self

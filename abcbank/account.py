@@ -43,8 +43,10 @@ class Account:
         return sum([t.amount for t in self.transactions])
 
     def transfer(self, toAccount, amount):
+        if self == toAccount:
+            raise ValueError("transfer between same accounts are invalid")
         if self.sumTransactions(checkAllTransactions=True) < amount:
-            raise ValueError("amount in "+ self.accountType < 0)
+            raise ValueError("amount in "+ self.accountType +"< 0")
         else:
             self.withdraw(amount)
             toAccount.deposit(amount)

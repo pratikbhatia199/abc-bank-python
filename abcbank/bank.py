@@ -1,9 +1,13 @@
+from collections import defaultdict
 class Bank:
     def __init__(self):
         self.customers = set()
 
     def addCustomer(self, customer):
-        self.customers.add(customer)
+        if customer not in self.customers:
+            self.customers.add(customer)
+        else:
+            ValueError("Customer with name John already present")
     def customerSummary(self):
         summary = "Customer Summary"
         for customer in self.customers:
