@@ -7,7 +7,7 @@ class Bank:
         if customer not in self.customers:
             self.customers.add(customer)
         else:
-            raise ValueError("Customer with name John already present")
+            print("Customer with name John already present")
 
     def customerSummary(self):
         summary = "Customer Summary"

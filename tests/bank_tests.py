@@ -13,6 +13,16 @@ def test_customer_summary():
                   "Customer Summary\n - John (1 account)")
 
 
+def test_unique_customer_added():
+    bank = Bank()
+    john1 = Customer("John")
+    bank.addCustomer(john1)
+    bank.addCustomer(john1)
+    assert_equals(bank.customerSummary(),
+                  "Customer Summary\n - John (0 accounts)")
+
+
+
 def test_checking_account():
     bank = Bank()
     checkingAccount = Account(CHECKING)
