@@ -50,6 +50,7 @@ class Account:
         if self.accountType == MAXI_SAVINGS:
             if not self.checkTransactionInLastTenDays():
                 return amount * 0.005 * DateProvider.getTotalDaysPassedRatio()
+            else: return amount * 0.001 * DateProvider.getTotalDaysPassedRatio()
         else:
             return amount * 0.001 * DateProvider.getTotalDaysPassedRatio()
 
@@ -59,8 +60,8 @@ class Account:
     def checkTransactionInLastTenDays(self):
         for t in self.transactions:
             if t.transactionDate >= DateProvider.tenDaysAgo():
-                return False
-        return True
+                return True
+        return False
 
     def transfer(self, toAccount, amount):
         if self == toAccount:
