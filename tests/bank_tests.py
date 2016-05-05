@@ -23,26 +23,26 @@ def test_unique_customer_added():
 
 
 
-def test_checking_account():
-    bank = Bank()
-    checkingAccount = Account(CHECKING)
-    bill = Customer("Bill").openAccount(checkingAccount)
-    bank.addCustomer(bill)
-    checkingAccount.deposit(100.0)
-    assert_equals(bank.totalInterestPaid(), 0.1)
-
-
-def test_savings_account():
-    bank = Bank()
-    checkingAccount = Account(SAVINGS)
-    bank.addCustomer(Customer("Bill").openAccount(checkingAccount))
-    checkingAccount.deposit(1500.0)
-    assert_equals(bank.totalInterestPaid(), 2.0)
-
-
-def test_maxi_savings_account():
-    bank = Bank()
-    checkingAccount = Account(MAXI_SAVINGS)
-    bank.addCustomer(Customer("Bill").openAccount(checkingAccount))
-    checkingAccount.deposit(3000.0)
-    assert_equals(bank.totalInterestPaid(), 170.0)
+# def test_checking_account():
+#     bank = Bank()
+#     checkingAccount = Account(CHECKING)
+#     bill = Customer("Bill").openAccount(checkingAccount)
+#     bank.addCustomer(bill)
+#     checkingAccount.deposit(100.0)
+#     assert_equals(bank.totalInterestPaid(), 0.1)
+#
+#
+# def test_savings_account():
+#     bank = Bank()
+#     checkingAccount = Account(SAVINGS)
+#     bank.addCustomer(Customer("Bill").openAccount(checkingAccount))
+#     checkingAccount.deposit(1500.0)
+#     assert_equals(bank.totalInterestPaid(), 2.0)
+#
+#
+# def test_maxi_savings_account():
+#     bank = Bank()
+#     checkingAccount = Account(MAXI_SAVINGS)
+#     bank.addCustomer(Customer("Bill").openAccount(checkingAccount))
+#     checkingAccount.deposit(3000.0)
+#     assert_equals(bank.totalInterestPaid(), 170.0)
